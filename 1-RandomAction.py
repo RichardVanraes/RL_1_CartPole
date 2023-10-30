@@ -22,7 +22,7 @@ for _ in range(nr_of_iterations):
     observation = env.reset()
     total_rew = 0   
     for _ in range(nr_episodes_per_iteration): # replace '_' with 't' to see the time steps
-        env.render()
+        #env.render()
         action = computeAction(observation)
         observation, reward, done, info = env.step(action) # take the action
         total_rew = total_rew + reward # update the total reward
@@ -40,6 +40,7 @@ print("Total number of steps = ",np.sum(history)+1)
 
 # Show the distribution of the rewards or timesteps
 df = pd.DataFrame(history, columns=['Rewards'])
-sns.displot(data=df)
+sns.displot(data=df, legend=False)
 plt.title("CartPole-V0 Random Action")
+plt.figtext(0.6, 0.6, df.describe().loc[['count','mean','std']].to_string())
 plt.show()
