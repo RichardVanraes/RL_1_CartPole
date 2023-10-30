@@ -12,4 +12,4 @@
 
 ### 1.1 Random action based control
 - Number of timesteps = the final reward per episode
-![Histogram of Random action based control]()
+![Histogram of Random action based control](gym-results/Histogram_Random_Action.png)
