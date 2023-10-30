@@ -1,5 +1,6 @@
 import gym
 import numpy as np
+import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
@@ -38,6 +39,7 @@ print("Minimum reward = ",np.min(history))
 print("Total number of steps = ",np.sum(history)+1)
 
 # Show the distribution of the rewards or timesteps
-sns.displot(data=history, x="Rewards", y="Frequency")
+df = pd.DataFrame(history, columns=['Rewards'])
+sns.displot(data=df)
 plt.title("CartPole-V0 Random Action")
 plt.show()
