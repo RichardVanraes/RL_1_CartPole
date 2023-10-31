@@ -11,5 +11,19 @@
 - The goal of the agent is to maximize the total reward over the episode
 
 ### 1.1 Random action based control
-- Number of timesteps = the final reward per episode
-![Histogram of Random action based control](gym-results/Histogram_Random_Action.png)
+![Histogram of Random action based control](gym-results/1-Histogram_Random_Action.png)
+
+### 1.2 Angle based action control
+![Histogram of Angle based action control](gym-results/2-Histogram_AngleBased_Action.png)
+
+### 1.3 Random Search based control
+![Plots of Random Search based control](gym-results/3-RandomSearchPlots.png)
+
+### 1.4 Hill climbing
+![Plots of Hill Climbing](gym-results/4-HillClimbingPlots.png)
+
+### 1.5 Simulated Annealing
+![Plots of Simulated Annealing](gym-results/5-SimulatedAnnealingPlots.png)
+
+### 1.6 Adaptive noise scaling
+![Plots of Adaptive Noise Scaling](gym-results/6-AdaptiveNoiseScalingPlots.png)
