@@ -6,8 +6,7 @@ import matplotlib.pyplot as plt
 
 # Initialise counters
 history = []
-nr_of_iterations = 1000
-nr_episodes_per_iteration = 200
+nr_episodes = 1000
 
 # Create the environment
 env = gym.make('CartPole-v0')
@@ -16,19 +15,16 @@ env = gym.make('CartPole-v0')
 def computeAction(observation):
     return env.action_space.sample()
 
-for _ in range(nr_of_iterations):
-    # Reset the environment to get the initial state 
-    # and get the initial observation with angle = observation[2]
-    observation = env.reset()
-    total_rew = 0   
-    for _ in range(nr_episodes_per_iteration): # replace '_' with 't' to see the time steps
-        #env.render()
+for _ in range(nr_episodes): # replace '_' with 't' to see the time steps
+    observation = env.reset() # reset the environment
+    total_rew = 0 # initialise the total reward
+    done = False
+    while not done:
+        # env.render()
         action = computeAction(observation)
         observation, reward, done, info = env.step(action) # take the action
         total_rew = total_rew + reward # update the total reward
-        if done:
-            history.append(total_rew)
-            break
+    history.append(total_rew)
 env.close()
 
 # print the statistics
@@ -42,5 +38,6 @@ print("Total number of steps = ",np.sum(history)+1)
 df = pd.DataFrame(history, columns=['Rewards'])
 sns.displot(data=df, legend=False)
 plt.title("CartPole-V0 Random Action")
+plt.subplots_adjust(top=0.95)
 plt.figtext(0.6, 0.6, df.describe().loc[['count','mean','std']].to_string())
 plt.show()
