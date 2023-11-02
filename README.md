@@ -61,7 +61,7 @@ In this 3D scatterplot the extra orange color shows the path the algorithm took 
 ![Plots of Adaptive Noise Scaling](gym-results/6-AdaptiveNoiseScalingPlots.png)
 
 ### Recap of the results
-| Method  | Average reward  | Std  |  Best weights |
+| Method | Reward | Std | Weights |
 | --- | --- | --- | --- |
 | Random action based control  | 21.8  | 10.9  |  - |
 | Angle based action control  | 41.8  | 8.7  |  - |
@@ -85,5 +85,7 @@ The same script was used for the CartPole-V1 environment. The results are shown 
 In my opinion it does make sense to derive more linear derivatives from the observation variables. It increases the space in which an optimal solution can be found and it would take the correlation between the variables into account. This would make the search for optimal weights harder and more time consuming and less possible to visualise. But it would give the algoritm more freedom to find a better solution.
 
 *Is it possible to solve the MountainCar-v0 environment with these search based optimization techniques?*
+At first sight I think it is possible given some minor adjustments in mindset. The MountainCar-v0 environment has a negative reward for every timestep. This means that the agent needs to reach the goal as fast as possible. We need to minimize the reward instead of maximizing the reward.
+Both the action space (discrete steps) and observation space (2 observation variables) work in a similar way to the CartPole environment.
 
-
+On second thought the Mountaincar environment needs more strategy to solve. The Actions taken at the beginning have an effect later on (pushing the cart onto the hill will have a reaction later on). This means that the agent needs to think ahead. This is not possible with the current methods. The agent needs to be able to look ahead and take actions based on the future. This is not possible with the current methods.
